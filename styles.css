@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ===== WORDLE STYLES ===== */
+#wordle-page h1 {
+    text-align: center;
+    color: #764ba2;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+#wordle-game {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wordle-row {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.wordle-cell {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    background: white;
+    text-transform: uppercase;
+}
+
+.wordle-cell.current {
+    border-color: #667eea;
+    background: #f0f0f0;
+}
+
+.wordle-cell.correct {
+    background: #6aaa64;
+    color: white;
+    border-color: #6aaa64;
+}
+
+.wordle-cell.present {
+    background: #b59f3b;
+    color: white;
+    border-color: #b59f3b;
+}
+
+.wordle-cell.absent {
+    background: #787c7e;
+    color: white;
+    border-color: #787c7e;
+}
+
+#keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.key {
+    padding: 10px 8px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.key:hover {
+    background: #d0d0d0;
+}
+
+.key.special {
+    flex: 1;
+    max-width: 100px;
+    background: #667eea;
+    color: white;
+}
+
+.key.special:hover {
+    background: #764ba2;
+}
+
+.key.correct {
+    background: #6aaa64;
+    color: white;
+}
+
+.key.present {
+    background: #b59f3b;
+    color: white;
+}
+
+.key.absent {
+    background: #787c7e;
+    color: white;
+}
+
+#message {
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+#message.error {
+    color: #d32f2f;
+}
+
+#message.success {
+    color: #388e3c;
+}
+
+#message.info {
+    color: #667eea;
+}
+
+/* ===== BIRTHDAY PAGE STYLES ===== */
+#birthday-page {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+#birthday-page h1 {
+    color: #764ba2;
+    font-size: 48px;
+    margin-bottom: 30px;
+    animation: bounce 1s infinite;
+}
+
+.wishes {
+    background: #f0f0f0;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.wishes p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.btn-next {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.btn-next:hover {
+    background: #764ba2;
+    transform: scale(1.05);
+}
+
+/* ===== CONNECTIONS GAME STYLES ===== */
+#connections-page h1 {
+    text-align: center;
+    color: #764ba2;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.connections-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.connections-info p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#attempts-left {
+    font-weight: bold;
+    color: #667eea;
+}
+
+.connections-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.connections-item {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.2s;
+    word-wrap: break-word;
+}
+
+.connections-item:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+.connections-item.selected {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.connections-item.solved {
+    opacity: 0.9;
+    cursor: not-allowed;
+}
+
+.connections-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    max-width: 150px;
+    padding: 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: #764ba2;
+}
+
+#connections-message {
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+    margin-bottom: 10px;
+}
+
+#connections-message.error {
+    color: #d32f2f;
+}
+
+#connections-message.success {
+    color: #388e3c;
+}
+
+#connections-message.warning {
+    color: #ff9800;
+}
+
+/* ===== PHOTO GALLERY STYLES ===== */
+#gallery-page h1 {
+    text-align: center;
+    color: #764ba2;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.photo-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.photo-caption {
+    padding: 15px;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .wordle-cell {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #birthday-page h1 {
+        font-size: 36px;
+    }
+
+    .connections-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .connections-item {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-next {
+        width: 100%;
+    }
+}
